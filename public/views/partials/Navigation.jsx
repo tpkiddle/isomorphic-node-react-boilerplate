@@ -14,6 +14,7 @@ class Navigation extends React.Component {
   render() {
     const navItems = [
       { title: 'Home', path: '/'},
+      { title: 'Broken 404', path: '/dead_link'},
       { title: 'Contact', path: '/contact'}
     ];
 
@@ -24,7 +25,7 @@ class Navigation extends React.Component {
             return (
               <li key={item.path}>
                 <Router.Link to={item.path}>
-                  test
+                  {item.title}
                 </Router.Link>
               </li>
             );

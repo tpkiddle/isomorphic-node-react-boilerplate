@@ -10610,7 +10610,7 @@
 	     * @returns {XML}
 	     */
 	    value: function render() {
-	      var navItems = [{ title: 'Home', path: '/' }, { title: 'Contact', path: '/contact' }];
+	      var navItems = [{ title: 'Home', path: '/' }, { title: 'Broken 404', path: '/dead_link' }, { title: 'Contact', path: '/contact' }];
 
 	      return React.createElement(
 	        'nav',
@@ -10625,7 +10625,7 @@
 	              React.createElement(
 	                Router.Link,
 	                { to: item.path },
-	                'test'
+	                item.title
 	              )
 	            );
 	          })
@@ -10831,13 +10831,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
-	        Basic,
-	        { title: 'Error 404', path: this.props.path },
-	        React.createElement(
-	          'h1',
-	          null,
-	          'Page Not Found (404)'
-	        ),
+	        'div',
+	        { className: 'clearfix' },
 	        React.createElement(
 	          'p',
 	          null,
