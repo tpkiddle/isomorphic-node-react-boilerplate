@@ -1,6 +1,7 @@
 ## Project specific
 public/css/app.css
 public/css/app.css.map
+public/bundle.js
 
 # Environment variables should not be committed
 .env
@@ -119,3 +120,4 @@ uploads/*
 uploads
 /uploads
 /uploads/*
+
