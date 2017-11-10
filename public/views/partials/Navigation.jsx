@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const PropTypes = require('prop-types');
 const Router = require('react-router');
 const Assets = require('../layouts/Assets');
 const FlashMessages = require('../partials/FlashMessages');
@@ -37,10 +38,10 @@ class Navigation extends React.Component {
 }
 
 Navigation.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  path: React.PropTypes.string,
-  messages: React.PropTypes.array,
-  user: React.PropTypes.object
+  title: PropTypes.string.isRequired,
+  path: PropTypes.string,
+  messages: PropTypes.array,
+  user: PropTypes.object
 };
 
 module.exports = Navigation;

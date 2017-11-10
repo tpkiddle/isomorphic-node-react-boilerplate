@@ -41,7 +41,6 @@ const babelRegister = require('babel-register')({
   presets: ['es2015', 'react']
 });
 
-
 /**
  * View engine setup
  */
@@ -65,10 +64,6 @@ app.set('view', ReactEngine.expressView);
 app.use(favicon(paths.favicon));
 
 app.use(logger(isDevelopment ? 'dev' : 'common'));
-
-// app.get('*', function(req, res) {
-//   res.render(req.url,);
-// });
 
 const jsonParser = bodyParser.json({ limit: 1024 * 1024 * 20 });
 const urlencodedParser = bodyParser.urlencoded({ extended: true, limit: 1024 * 1024 * 20 });
@@ -105,8 +100,9 @@ require('./config/passport')();
  * Connect to Mongo DB server
  */
 const dbHost = `${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
+const connectionUri = `mongodb://${dbHost}/${process.env.MONGO_DATABASE_NAME}`
+const connection = mongoose.connect(connectionUri);
 
-const connection = mongoose.connect(`mongodb://${dbHost}/${process.env.MONGO_DATABASE_NAME}`);
 mongoose.Promise = global.Promise;
 
 /**
@@ -130,31 +126,11 @@ app.use(express.static(paths.public));
 /**
  * Add common variables to all routes
  */
-// app.use(function (req, res, next) {
-//   res.locals.isDevelopment = isDevelopment;
-//   res.locals.siteName = process.env.SITE_NAME;
-//   next();
-// });
-
-/**
- * Catch authenticated request to login and register routes and redirect to /
- */
-// app.use(function(req, res, next) {
-//   if ((req.user && req.path === '/login') || (req.user && req.path === '/signup')) {
-
-//     res.redirect('/');
-//   }
-
-//   next();
-// });
-
-/**
- * Pass the authenticated user and any flash messages to all views
- */
 app.use(function(req, res, next) {
   res.locals.user = req.user;
   res.locals.path = req.path;
   res.locals.messages = req.flash('messages');
+  res.locals.defaults = { currency: 'USD' };
 
   return next();
 });
@@ -187,17 +163,17 @@ app.use(function(req, res, next) {
 });
 
 /**
- * error handler (prints stack trace in development)
+ * Error handler (prints stack trace in development and staging)
  */
-// app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) {
 
-//   const env = process.env.NODE_ENV;
-//   const debugEnabled = (env === 'development' || env === 'staging');
+  const env = process.env.NODE_ENV;
+  const debugMode = (env === 'development' || env === 'staging');
 
-//   res.status(500).render('errors/Http500', {
-//     debugEnabled: debugEnabled,
-//     errorMessage: err.message
-//   });
-// });
+  res.status(500).render('errors/Http500', {
+    debugMode: debugMode,
+    errorMessage: err.message
+  });
+});
 
 module.exports = app;

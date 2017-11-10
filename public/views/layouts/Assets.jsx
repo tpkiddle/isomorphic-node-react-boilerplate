@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const PropTypes = require('prop-types');
 
 class Assets extends React.Component {
 
@@ -17,7 +18,7 @@ class Assets extends React.Component {
 }
 
 Assets.propTypes = {
-  children: React.PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 };
 
 module.exports = Assets;

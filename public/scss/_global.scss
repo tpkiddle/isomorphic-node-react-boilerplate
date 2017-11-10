@@ -1,0 +1,35 @@
+.header {
+  nav {
+    margin-top: 30px;
+    margin-bottom: 60px;
+
+    .logo {
+      display: inline-block;
+      margin-right: 30px;
+      font-size: 1.6em;
+      font-weight: bold;
+
+      img {
+        width: 120px;
+      }
+    }
+
+    ul {
+      display: inline-block;
+      vertical-align: sub;
+
+      a {
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  .currency-choice {
+    display: inline-block;
+    float: right;
+
+    .currency-choice__value {
+      font-weight: bold;
+    }
+  }
+}

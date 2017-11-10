@@ -1,9 +1,10 @@
 'use strict';
 
 const React = require('react');
-const Basic = require('./layouts/Basic');
+const PropTypes = require('prop-types');
 
 class Home extends React.Component {
+
   render() {
     return (
       <div className="clearfix">
@@ -13,10 +14,10 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  messages: React.PropTypes.array,
-  user: React.PropTypes.object,
-  title: React.PropTypes.string.isRequired,
-  path: React.PropTypes.string
+  messages: PropTypes.array,
+  user: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  path: PropTypes.string
 };
 
 module.exports = Home;

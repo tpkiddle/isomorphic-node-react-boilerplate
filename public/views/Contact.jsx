@@ -1,7 +1,7 @@
 'use strict';
 
 const React = require('react');
-const Basic = require('./layouts/Basic');
+const PropTypes = require('prop-types');
 
 class Contact extends React.Component {
 
@@ -60,10 +60,10 @@ class Contact extends React.Component {
 }
 
 Contact.propTypes = {
-  messages: React.PropTypes.array,
-  user: React.PropTypes.object,
-  title: React.PropTypes.string.isRequired,
-  path: React.PropTypes.string
+  messages: PropTypes.array,
+  user: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  path: PropTypes.string
 };
 
 module.exports = Contact;

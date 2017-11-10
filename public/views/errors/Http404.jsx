@@ -1,7 +1,7 @@
 'use strict';
 
 const React = require('react');
-const Basic = require('../layouts/Basic');
+const Main = require('../layouts/Main');
 
 class Http404 extends React.Component {
   render() {
