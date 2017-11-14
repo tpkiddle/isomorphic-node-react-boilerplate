@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const PropTypes = require('prop-types');
 
 class FlashMessages extends React.Component {
   getTitle(title) {
@@ -63,7 +64,7 @@ class FlashMessages extends React.Component {
 };
 
 FlashMessages.propTypes = {
-  messages: React.PropTypes.array
+  messages: PropTypes.array
 };
 
 module.exports = FlashMessages;
