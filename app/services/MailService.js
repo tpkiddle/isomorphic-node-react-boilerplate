@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 class MailService {
   constructor() {
@@ -8,7 +8,7 @@ class MailService {
      * using the default SMTP transport.
      */
 
-    const nodemailer = require('nodemailer');
+    const nodemailer = require('nodemailer')
 
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -16,18 +16,18 @@ class MailService {
         user: 'your_email@email.com',
         pass: 'your_pasword'
       }
-    });
+    })
   }
 
   sendRegistrationEmail(user, returnUrl) {
 
-    const self = this;
+    const self = this
 
     return new Promise((resolve, reject) => {
 
-      const React = require('react');
-      const EmailTemplate = require('../views/emails/RegistrationEmail.jsx');
-      const ReactDOMServer = require('react-dom/server');
+      const React = require('react')
+      const EmailTemplate = require('../views/emails/RegistrationEmail.jsx')
+      const ReactDOMServer = require('react-dom/server')
 
       /**
        * Setup email data with unicode symbols
@@ -38,7 +38,7 @@ class MailService {
           user: user,
           returnUrl: returnUrl
         })
-      );
+      )
 
       const mailOptions = {
         from: 'your_email@email.com',
@@ -46,21 +46,17 @@ class MailService {
         subject: 'Registration email',
         text: '',
         html: content
-      };
+      }
 
       /**
        * Send mail with defined transport object
        */
 
       self.transporter.sendMail(mailOptions)
-        .then((info) => {
-          resolve(info);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+        .then(info => resolve(info))
+        .catch(err => reject(err))
+    })
   }
 }
 
-module.exports = MailService;
+module.exports = MailService

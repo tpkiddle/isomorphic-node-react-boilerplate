@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-'use strict';
+'use strict'
 
 if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
 
@@ -9,35 +9,35 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
    * Should not be checked into version control
    */
 
-  require('dotenv').config();
+  require('dotenv').config()
 }
 
 /**
  * Get port from environment
  */
-const PORT = parseInt(process.env.PORT, 10) || 3000;
+const PORT = parseInt(process.env.PORT, 10) || 3000
 
 /**
  * Module dependencies
  */
 const debug = require('debug')('nodereactapp:server'),
       http = require('http'),
-      app = require('../app');
+      app = require('../app')
 
 /**
  * Configure the app
  */
-app.set('port', PORT);
+app.set('port', PORT)
 
 /**
  * Create HTTP server.
  */
-const server = http.createServer(app);
+const server = http.createServer(app)
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.listen(PORT);
+server.listen(PORT)
 
 /**
  * Livereload for development
@@ -48,17 +48,17 @@ if (process.env.NODE_ENV === 'development') {
   const livereload = require('livereload'),
         lrserver = livereload.createServer({
           exts: ['scss', 'jsx']
-        });
+        })
 
-  lrserver.watch(`${__dirname}/..`);
+  lrserver.watch(`${__dirname}/..`)
 }
 
 /**
  * Event listener for HTTP server "listening" event.
  */
 server.on('listening', () => {
-  debug(`Listening on port ${server.address().port}`);
-});
+  debug(`Listening on port ${server.address().port}`)
+})
 
 /**
  * Event listener for HTTP server "error" event.
@@ -66,15 +66,15 @@ server.on('listening', () => {
 server.on('error', (error) => {
 
   if (error.syscall !== 'listen') {
-    throw error;
+    throw error
   }
 
   switch (error.code) {
     case 'EACCES':
-      throw new Error(`Port ${PORT} requires elevated privileges`);
+      throw new Error(`Port ${PORT} requires elevated privileges`)
     case 'EADDRINUSE':
-      throw new Error(`Port ${PORT} is already in use`);
+      throw new Error(`Port ${PORT} is already in use`)
     default:
-      throw error;
+      throw error
   }
-});
+})

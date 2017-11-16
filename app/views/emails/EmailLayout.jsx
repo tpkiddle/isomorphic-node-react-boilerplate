@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const React = require('react');
+const React = require('react')
 
 class EmailLayout extends React.Component {
 
@@ -18,7 +18,7 @@ class EmailLayout extends React.Component {
       background: '#f21d43',
       margin: 0,
       padding: '48px 0'
-    };
+    }
 
     return (
       <table className="body-wrap" style={{fontSize: '100%', fontFamily: '"Avenir Next", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif', lineHeight: '1.65', width: '100% !important', height: '100%', WebkitFontSmoothing: 'antialiased', WebkitTextSizeAdjust: 'none', background: '#ffffff', margin: 0, padding: 0}}>
@@ -57,15 +57,15 @@ class EmailLayout extends React.Component {
           </tr>
         </tbody>
       </table>
-    );
+    )
   }
 }
 
 EmailLayout.propTypes = {
   user: React.PropTypes.object
-};
+}
 
-module.exports = EmailLayout;
+module.exports = EmailLayout
 
 
 

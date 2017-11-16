@@ -6,7 +6,7 @@
   "scripts": {
     "bootstrap": "npm install -g npm@4.5.0; npm install -g n@2.1.4; n 7.1.0",
     "cover": "istanbul check-coverage",
-    "lint": "eslint \"./app/!(migrations)**/*.js\" ./bin/**/* ./spec/**/*.js",
+    "lint": "if ! [ -f eslintrc ]; then curl -o eslintrc 'https://raw.githubusercontent.com/ripple/javascript-style-guide/es6/eslintrc' >> eslintrc; fi; eslint --ignore-path .eslintignore -c eslintrc --rule {'no-var':0} $(git --no-pager diff --name-only -M100% --diff-filter=AM --relative origin/master | grep \".js$\")",
     "test": "rm -rf ./build/coverage && istanbul cover jasmine --stop-on-failure=true",
     "start": "webpack && node ./bin/www",
     "dev": "webpack -w & nodemon ./bin/www"

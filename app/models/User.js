@@ -1,6 +1,7 @@
-// load the things we need
-const mongoose = require('mongoose'),
-      bcrypt = require('bcrypt');
+'use strict'
+
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 /**
  * Define the user schema. In here we store client
@@ -60,18 +61,18 @@ const schema = new mongoose.Schema({
     type: Number,
     default: 1
   }
-}, { minimize: false });
+}, {minimize: false})
 
 // Generating a hash
 schema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+}
 
 // Checking if password is valid
 schema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.auth.password);
-};
+  return bcrypt.compareSync(password, this.auth.password)
+}
 
 // create the model for users and expose it to our app
-const User = mongoose.model('User', schema, 'users');
-module.exports = User;
+const User = mongoose.model('User', schema, 'users')
+module.exports = User

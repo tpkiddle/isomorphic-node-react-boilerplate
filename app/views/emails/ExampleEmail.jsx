@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const React = require('react');
-const EmailLayout = require('./EmailLayout');
+const React = require('react')
+const EmailLayout = require('./EmailLayout')
 
 
 class ExampleEmail extends React.Component {
@@ -32,15 +32,15 @@ class ExampleEmail extends React.Component {
           </table>
         </td>
       </EmailLayout>
-    );
+    )
   }
 }
 
 ExampleEmail.propTypes = {
   user: React.PropTypes.object
-};
+}
 
-module.exports = ExampleEmail;
+module.exports = ExampleEmail
 
 
 
